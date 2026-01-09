@@ -1,0 +1,138 @@
+/* ---------- Reset / Base ---------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.5;
+    color: #222;
+    background: #fafafa;
+}
+
+/* ---------- Header / Nav ---------- */
+
+header {
+    background: #d34728;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav h1 {
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
+}
+
+nav .right button {
+    background: none;
+    border: none;
+    margin-left: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+nav .right button:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Layout ---------- */
+
+.content {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ---------- Hero Section ---------- */
+
+.hero {
+
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Flex container */
+.hero-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card */
+.hero-menu-item {
+    flex: 1 1 220px;
+    max-width: 260px;
+
+    background: rgba(0, 0, 0, 0.65);   /* semi-transparent black */
+    backdrop-filter: blur(6px);       /* glass effect (optional) */
+    -webkit-backdrop-filter: blur(6px);
+
+    border-radius: 10px;
+    padding: 1.4rem;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    transition: 
+        transform 0.25s ease, 
+        box-shadow 0.25s ease, 
+        background 0.25s ease;
+
+    cursor: pointer;
+}
+
+/* Hover effect */
+.hero-menu-item:hover {
+    transform: translateY(-6px) scale(1.02);
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.5);
+}
+
+/* White text */
+.hero-menu-title {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.hero-menu-desc {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.4;
+}
+
+
+/* ---------- Banner ---------- */
+
+.banner {
+    background: #d34728;
+    padding: 3rem 1.5rem;  
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+}
+
+.banner h2 {
+    max-width: 600px;
+    margin-bottom: 1rem;
+}
+
+.banner p {
+    max-width: 700px;
+    color: #222;
+}
