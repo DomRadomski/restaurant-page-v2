@@ -1,3 +1,32 @@
+/* ---------- CSS Variables ---------- */
+
+:root {
+    /* Brand colours */
+    --brand-primary: #1985A1;
+
+    /* Text */
+    --text-primary: #ffffff;
+    --text-light: #ffffff;
+    --text-light-muted: rgba(255, 255, 255, 0.85);
+
+    /* Backgrounds */
+    --page-bg: #DCDCDD;
+ /* Cards */
+    /* Cards */
+    --card-bg: rgba(70, 73, 76, 0.65);
+    --card-bg-hover: rgba(70, 73, 76, 0.85);
+
+    /* Shadows */
+    --shadow-card: 0 10px 24px rgba(20, 22, 25, 0.45);
+    --shadow-card-hover: 0 18px 40px rgba(20, 22, 25, 0.65);
+
+
+    /* Layout helpers */
+    --container: 1100px;
+    --pad-x: clamp(1rem, 3vw, 2rem);
+    --section-y: clamp(2rem, 5vw, 4rem);
+}
+
 /* ---------- Reset / Base ---------- */
 
 * {
@@ -6,133 +35,201 @@
     padding: 0;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.5;
-    color: #222;
-    background: #fafafa;
+    color: var(--text-primary);
+    background: var(--page-bg);
+    margin: 0;
+
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Optional: nicer focus for keyboard users */
+button:focus-visible {
+    outline: 2px solid rgba(255,255,255,0.8);
+    outline-offset: 3px;
 }
 
 /* ---------- Header / Nav ---------- */
 
 header {
-    background: #d34728;
+    background: var(--brand-primary);
 }
 
 nav {
-    max-width: 1200px;
+    max-width: var(--container);
     margin: 0 auto;
-    padding: 1rem 1.5rem;
+    padding: 1rem var(--pad-x);
 
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 nav h1 {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 1.2vw + 0.9rem, 1.35rem);
     letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+nav .right {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 nav .right button {
     background: none;
     border: none;
-    margin-left: 1rem;
-    font-weight: 600;
+    padding: 0.4rem 0.6rem;
+    font-weight: 700;
     cursor: pointer;
+    color: var(--text-light);
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 nav .right button:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    background: rgba(255,255,255,0.18);
+}
+
+nav .right button:active {
+    transform: translateY(1px);
 }
 
 /* ---------- Layout ---------- */
 
 .content {
-    width: 100%;
+    max-width: var(--container);
     margin: 0 auto;
+    padding: var(--section-y) var(--pad-x);
+    padding-bottom: 0px;
+
+    /* if you have multiple sections stacked, space them */
+    display: grid;
+    gap: var(--section-y);
+    flex: 1;
 }
 
 /* ---------- Hero Section ---------- */
 
 .hero {
-
-    height: 70vh;
+    /* don’t force a tall hero; let content define height */
+    padding: var(--section-y) 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
-/* Flex container */
 .hero-menu {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-    align-items: center;
+    gap: 1.25rem;
+
+    justify-content: center;   /* centers rows */
+}
+
+
+/* 2 columns on small tablets */
+@media (min-width: 600px) {
+    .hero-menu {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* 3 columns on desktop */
+@media (min-width: 900px) {
+    .hero-menu {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 /* Card */
 .hero-menu-item {
-    flex: 1 1 220px;
-    max-width: 260px;
-
-    background: rgba(0, 0, 0, 0.65);   /* semi-transparent black */
-    backdrop-filter: blur(6px);       /* glass effect (optional) */
+    background: var(--card-bg);
+    backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
 
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 1.4rem;
 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
-    transition: 
-        transform 0.25s ease, 
-        box-shadow 0.25s ease, 
+    box-shadow: var(--shadow-card);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
         background 0.25s ease;
 
     cursor: pointer;
+
+    /* helps cards align nicely */
+    min-height: 150px;
 }
 
 /* Hover effect */
 .hero-menu-item:hover {
-    transform: translateY(-6px) scale(1.02);
-    background: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.5);
+    transform: translateY(-6px) scale(1.01);
+    background: var(--card-bg-hover);
+    box-shadow: var(--shadow-card-hover);
 }
 
 /* White text */
 .hero-menu-title {
     font-size: 1.05rem;
     margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #ffffff;
+    font-weight: 700;
+    color: var(--text-light);
 }
 
 .hero-menu-desc {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.85);
+    font-size: 0.95rem;
+    color: var(--text-light-muted);
     line-height: 1.4;
 }
-
 
 /* ---------- Banner ---------- */
 
 .banner {
-    background: #d34728;
-    padding: 3rem 1.5rem;  
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center;
+    background: var(--brand-primary);
+
+    /* banner should stretch full width even inside .content */
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+
+    padding: var(--section-y) var(--pad-x);
+    display: grid;
+    place-items: center;
     text-align: center;
+    overflow: hidden;
+}
+
+.banner .inner {
+    /* if your HTML doesn’t have .inner, this won’t apply — totally fine */
+    max-width: 800px;
 }
 
 .banner h2 {
-    max-width: 600px;
+    max-width: 800px;
     margin-bottom: 1rem;
+    font-size: clamp(1.4rem, 2vw + 1rem, 2.2rem);
+    color: var(--text-light);
+    line-height: 1.15;
 }
 
 .banner p {
-    max-width: 700px;
-    color: #222;
+    max-width: 750px;
+    color: rgba(255,255,255,0.9);
+    font-size: clamp(1rem, 0.6vw + 0.9rem, 1.1rem);
 }
