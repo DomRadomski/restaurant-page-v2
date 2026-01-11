@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
+  devtool: 'eval-source-map',
   entry: './src/index.js',            // entry point for your app
   output: {
     filename: 'main.js',
@@ -11,7 +12,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/template.html' // uses your template and injects the bundle:contentReference[oaicite:18]{index=18}
+      template: './src/index.html' // uses your template and injects the bundle:contentReference[oaicite:18]{index=18}
     })
   ],
   module: {
