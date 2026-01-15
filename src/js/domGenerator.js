@@ -1,5 +1,3 @@
-import './styles.css';
-
 const domGenerator = (() => {
 
   const pageContent = document.querySelector(".content");
@@ -33,7 +31,9 @@ const domGenerator = (() => {
     left.appendChild(generateElement("h1", null, "BARFIN OF BAY WEST"));
 
     ["HOME", "MENU", "ABOUT"].forEach(label => {
-      right.appendChild(generateElement("button", null, label));
+      const navButton = generateElement("button", null, label)
+      navButton.id = `${label.toLowerCase()}-btn`;
+      right.appendChild(navButton);
     });
 
     nav.appendChild(left);
@@ -113,9 +113,7 @@ const domGenerator = (() => {
   return { generateNav, generateHero, generateBanner};
 })();
 
-document.addEventListener("DOMContentLoaded", () => {
-  domGenerator.generateNav();
-  domGenerator.generateHero();
-  domGenerator.generateBanner();
-});
+
+
+export { domGenerator };
 

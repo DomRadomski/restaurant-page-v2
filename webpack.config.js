@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   devtool: 'eval-source-map',
-  entry: './src/index.js',            // entry point for your app
+  entry: './src/js/index.js',            // entry point for your app
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
