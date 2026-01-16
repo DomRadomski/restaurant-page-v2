@@ -114,7 +114,7 @@ nav .right button:active {
     max-width: var(--container);
     margin: 0 auto;
     padding: var(--section-y) var(--pad-x);
-    padding-bottom: 0px;
+    padding-bottom: 20px;
 
     /* if you have multiple sections stacked, space them */
     display: grid;
@@ -233,3 +233,153 @@ nav .right button:active {
     color: rgba(255,255,255,0.9);
     font-size: clamp(1rem, 0.6vw + 0.9rem, 1.1rem);
 }
+
+/* ================================
+   MENU & ABOUT PAGES
+   ================================ */
+
+/* ---------- Menu layout ---------- */
+
+.menu-section {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.menu-section h2 {
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #2b2e34;
+}
+
+/* Grid for menu items */
+.menu-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* 2 columns tablet */
+@media (min-width: 700px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 3 columns desktop */
+@media (min-width: 1000px) {
+  .menu-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Menu item card */
+.menu-item {
+  background: var(--card-bg);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 1.25rem;
+
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.menu-item h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.menu-item p {
+  font-size: 0.95rem;
+  color: var(--text-light-muted);
+  margin-bottom: 0.6rem;
+}
+
+/* Price aligned bottom-right */
+.menu-item .price {
+  display: block;
+  font-weight: 800;
+  text-align: right;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- About page ---------- */
+
+.about-section {
+  display: grid;
+  gap: 1.25rem;
+  color: #2b2e34;
+}
+
+.about-section h2 {
+  font-size: 1.6rem;
+  letter-spacing: 0.04em;
+}
+
+.about-section p {
+  max-width: 800px;
+  color: #2b2e34;;
+  font-size: 1.05rem;
+}
+
+/* Beliefs grid */
+.about-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* 3 cards on desktop */
+@media (min-width: 900px) {
+  .about-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* About cards */
+.about-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 1.4rem;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.about-card h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.15rem;
+  color: var(--text-light);
+}
+
+.about-card p {
+  font-size: 0.95rem;
+  color: var(--text-light-muted);
+}
+
+/* ---------- Shared hours list ---------- */
+
+.hours {
+  list-style: none;
+  margin-top: 0.75rem;
+}
+
+.hours li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.hours li:last-child {
+  border-bottom: none;
+}
+

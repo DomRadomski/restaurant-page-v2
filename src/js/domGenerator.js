@@ -58,6 +58,18 @@ const domGenerator = (() => {
       {
         title: "Plant Power Bowl",
         description: "Roasted veg, quinoa, tahini dressing, toasted seeds."
+      },
+      {
+        title: "Smoked Brisket Burger",
+        description: "12-hour slow smoked brisket, pickles, house sauce."
+      },
+      {
+        title: "Crispy Chicken Stack",
+        description: "Buttermilk chicken, slaw, spicy mayo, brioche bun."
+      },
+      {
+        title: "Plant Power Bowl",
+        description: "Roasted veg, quinoa, tahini dressing, toasted seeds."
       }
     ];
 
