@@ -2,7 +2,11 @@ import { domGenerator } from "./domGenerator";
 
 const generateMenu = () => {
   
-  domGenerator.generateHero();
+  domGenerator.generateStarters();
+  domGenerator.generateMains();
+  domGenerator.generateGrill();
+  domGenerator.generateDesserts();
+  domGenerator.generateDrinks();
   
 };
 

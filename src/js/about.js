@@ -2,7 +2,9 @@ import { domGenerator } from "./domGenerator";
 
 const generateAbout = () => {
   
-  domGenerator.generateBanner();
+  domGenerator.generateStory();
+  domGenerator.generateBeliefs();
+  domGenerator.generateVisitContact();
 };
 
 export { generateAbout };

@@ -1,368 +1,298 @@
 /* ---------- CSS Variables ---------- */
 
 :root {
-    /* Brand colours */
-    --brand-primary: #1985A1;
+  /* Brand colours */
+  --brand-primary: #1985A1;
 
-    /* Text */
-    --text-primary: #ffffff;
-    --text-light: #ffffff;
-    --text-light-muted: rgba(255, 255, 255, 0.85);
+  /* Text */
+  --text-primary: #ffffff; /* for dark/brand surfaces */
+  --text-light: #ffffff;
+  --text-light-muted: rgba(255, 255, 255, 0.85);
 
-    /* Backgrounds */
-    --page-bg: #DCDCDD;
- /* Cards */
-    /* Cards */
-    --card-bg: rgba(70, 73, 76, 0.65);
-    --card-bg-hover: rgba(70, 73, 76, 0.85);
+  /* Text for light surfaces */
+  --text-dark: #2b2e34;
+  --text-dark-muted: rgba(43, 46, 52, 0.78);
 
-    /* Shadows */
-    --shadow-card: 0 10px 24px rgba(20, 22, 25, 0.45);
-    --shadow-card-hover: 0 18px 40px rgba(20, 22, 25, 0.65);
+  /* Backgrounds */
+  --page-bg: #DCDCDD;
 
+  /* Cards */
+  --card-bg: rgba(70, 73, 76, 0.65);
+  --card-bg-hover: rgba(70, 73, 76, 0.85);
 
-    /* Layout helpers */
-    --container: 1100px;
-    --pad-x: clamp(1rem, 3vw, 2rem);
-    --section-y: clamp(2rem, 5vw, 4rem);
+  /* Shadows */
+  --shadow-card: 0 10px 24px rgba(20, 22, 25, 0.45);
+  --shadow-card-hover: 0 18px 40px rgba(20, 22, 25, 0.65);
+
+  /* Layout helpers */
+  --container: 1100px;
+  --pad-x: clamp(1rem, 3vw, 2rem);
+  --section-y: clamp(2rem, 5vw, 4rem);
 }
 
 /* ---------- Reset / Base ---------- */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.5;
-    color: var(--text-primary);
-    background: var(--page-bg);
-    margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+  background: var(--page-bg);
+  margin: 0;
 
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Optional: nicer focus for keyboard users */
 button:focus-visible {
-    outline: 2px solid rgba(255,255,255,0.8);
-    outline-offset: 3px;
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 3px;
 }
 
 /* ---------- Header / Nav ---------- */
 
 header {
-    background: var(--brand-primary);
+  background: var(--brand-primary);
 }
 
 nav {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: 1rem var(--pad-x);
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 1rem var(--pad-x);
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 nav h1 {
-    font-size: clamp(1rem, 1.2vw + 0.9rem, 1.35rem);
-    letter-spacing: 0.05em;
-    line-height: 1.2;
+  font-size: clamp(1rem, 1.2vw + 0.9rem, 1.35rem);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  color: var(--text-light);
 }
 
 nav .right {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 nav .right button {
-    background: none;
-    border: none;
-    padding: 0.4rem 0.6rem;
-    font-weight: 700;
-    cursor: pointer;
-    color: var(--text-light);
-    border-radius: 8px;
-    transition: background 0.2s ease, transform 0.2s ease;
+  background: none;
+  border: none;
+  padding: 0.4rem 0.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--text-light);
+  border-radius: 8px;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 nav .right button:hover {
-    text-decoration: none;
-    background: rgba(255,255,255,0.18);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 nav .right button:active {
-    transform: translateY(1px);
+  transform: translateY(1px);
+}
+
+/* Optional active state if you add .is-active via JS */
+nav .right button.is-active {
+  background: rgba(255, 255, 255, 0.26);
 }
 
 /* ---------- Layout ---------- */
 
 .content {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: var(--section-y) var(--pad-x);
-    padding-bottom: 20px;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: var(--section-y) var(--pad-x);
+  padding-bottom: 20px;
 
-    /* if you have multiple sections stacked, space them */
-    display: grid;
-    gap: var(--section-y);
-    flex: 1;
+  display: grid;
+  gap: var(--section-y);
+  flex: 1;
+
+  /* IMPORTANT: light background => dark text */
+  color: var(--text-dark);
 }
 
-/* ---------- Hero Section ---------- */
+/* ---------- Hero ---------- */
 
 .hero {
-    /* don’t force a tall hero; let content define height */
-    padding: var(--section-y) 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+  padding: var(--section-y) 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.hero-menu {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-
-    justify-content: center;   /* centers rows */
-}
-
-
-/* 2 columns on small tablets */
-@media (min-width: 600px) {
-    .hero-menu {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-/* 3 columns on desktop */
-@media (min-width: 900px) {
-    .hero-menu {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-}
-
-/* Card */
-.hero-menu-item {
-    background: var(--card-bg);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-
-    border-radius: 12px;
-    padding: 1.4rem;
-
-    box-shadow: var(--shadow-card);
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
-
-    cursor: pointer;
-
-    /* helps cards align nicely */
-    min-height: 150px;
-}
-
-/* Hover effect */
-.hero-menu-item:hover {
-    transform: translateY(-6px) scale(1.01);
-    background: var(--card-bg-hover);
-    box-shadow: var(--shadow-card-hover);
-}
-
-/* White text */
-.hero-menu-title {
-    font-size: 1.05rem;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    color: var(--text-light);
-}
-
-.hero-menu-desc {
-    font-size: 0.95rem;
-    color: var(--text-light-muted);
-    line-height: 1.4;
-}
-
-/* ---------- Banner ---------- */
+/* ---------- Generic Banner (Home banner) ---------- */
 
 .banner {
-    background: var(--brand-primary);
+  background: var(--brand-primary);
 
-    /* banner should stretch full width even inside .content */
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-bottom: -20px;
 
-    padding: var(--section-y) var(--pad-x);
-    display: grid;
-    place-items: center;
-    text-align: center;
-    overflow: hidden;
-}
-
-.banner .inner {
-    /* if your HTML doesn’t have .inner, this won’t apply — totally fine */
-    max-width: 800px;
+  padding: var(--section-y) var(--pad-x);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  overflow: hidden;
 }
 
 .banner h2 {
-    max-width: 800px;
-    margin-bottom: 1rem;
-    font-size: clamp(1.4rem, 2vw + 1rem, 2.2rem);
-    color: var(--text-light);
-    line-height: 1.15;
+  max-width: 800px;
+  margin-bottom: 1rem;
+  font-size: clamp(1.4rem, 2vw + 1rem, 2.2rem);
+  color: var(--text-light);
+  line-height: 1.15;
 }
 
 .banner p {
-    max-width: 750px;
-    color: rgba(255,255,255,0.9);
-    font-size: clamp(1rem, 0.6vw + 0.9rem, 1.1rem);
+  max-width: 750px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1rem, 0.6vw + 0.9rem, 1.1rem);
 }
 
 /* ================================
-   MENU & ABOUT PAGES
+   NEW GENERIC BUILDING BLOCKS
+   Used by: template, menu, about
    ================================ */
 
-/* ---------- Menu layout ---------- */
+/* Full-width banner used on Menu/About */
+.page-banner {
+  background: var(--brand-primary);
 
-.menu-section {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+
+  padding: var(--section-y) var(--pad-x);
+  text-align: center;
   display: grid;
-  gap: 1.5rem;
+  place-items: center;
 }
 
-.menu-section h2 {
+.page-banner h2 {
+  font-size: clamp(1.6rem, 2vw + 1rem, 2.4rem);
+  margin-bottom: 0.75rem;
+  color: var(--text-light);
+}
+
+.page-banner p {
+  max-width: 750px;
+  color: var(--text-light-muted);
+  font-size: 1.05rem;
+}
+
+/* Generic content block (replaces sections) */
+.block {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.block-title {
   font-size: 1.6rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #2b2e34;
+  color: var(--text-dark);
 }
 
-/* Grid for menu items */
-.menu-grid {
+.block-text {
+  max-width: 800px;
+  color: var(--text-dark);
+  font-size: 1.05rem;
+}
+
+/* Generic grid (replaces menu-grid/about-grid/hero-menu) */
+.grid {
   display: grid;
   gap: 1.25rem;
 }
 
 /* 2 columns tablet */
 @media (min-width: 700px) {
-  .menu-grid {
+  .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 /* 3 columns desktop */
 @media (min-width: 1000px) {
-  .menu-grid {
+  .grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-/* Menu item card */
-.menu-item {
+/* Generic card (replaces hero-menu-item/menu-item/about-card) */
+.card {
   background: var(--card-bg);
   backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
   border-radius: 12px;
-  padding: 1.25rem;
+  padding: 1.35rem;
 
   box-shadow: var(--shadow-card);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+
+  cursor: pointer;
+  min-height: 150px;
 }
 
-.menu-item:hover {
-  transform: translateY(-4px);
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+  background: var(--card-bg-hover);
   box-shadow: var(--shadow-card-hover);
 }
 
-.menu-item h3 {
-  margin-bottom: 0.4rem;
-  font-size: 1.1rem;
-}
-
-.menu-item p {
-  font-size: 0.95rem;
-  color: var(--text-light-muted);
-  margin-bottom: 0.6rem;
-}
-
-/* Price aligned bottom-right */
-.menu-item .price {
-  display: block;
-  font-weight: 800;
-  text-align: right;
-  letter-spacing: 0.02em;
-}
-
-/* ---------- About page ---------- */
-
-.about-section {
-  display: grid;
-  gap: 1.25rem;
-  color: #2b2e34;
-}
-
-.about-section h2 {
-  font-size: 1.6rem;
-  letter-spacing: 0.04em;
-}
-
-.about-section p {
-  max-width: 800px;
-  color: #2b2e34;;
+.card-title {
   font-size: 1.05rem;
-}
-
-/* Beliefs grid */
-.about-grid {
-  display: grid;
-  gap: 1.25rem;
-}
-
-/* 3 cards on desktop */
-@media (min-width: 900px) {
-  .about-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-/* About cards */
-.about-card {
-  background: var(--card-bg);
-  backdrop-filter: blur(6px);
-  border-radius: 12px;
-  padding: 1.4rem;
-  box-shadow: var(--shadow-card);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.about-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover);
-}
-
-.about-card h3 {
-  margin-bottom: 0.4rem;
-  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
   color: var(--text-light);
 }
 
-.about-card p {
+.card-desc {
   font-size: 0.95rem;
   color: var(--text-light-muted);
+  line-height: 1.4;
+}
+
+/* For menu prices, etc. */
+.card-meta {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card-price {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--text-light);
+}
+
+/* Subheading used on About "Opening Hours" */
+.subheading {
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  margin-top: 0.5rem;
+  color: var(--text-dark);
 }
 
 /* ---------- Shared hours list ---------- */
@@ -370,16 +300,17 @@ nav .right button:active {
 .hours {
   list-style: none;
   margin-top: 0.75rem;
+  max-width: 520px;
 }
 
 .hours li {
   display: flex;
   justify-content: space-between;
   padding: 0.4rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(43, 46, 52, 0.18);
+  color: var(--text-dark);
 }
 
 .hours li:last-child {
   border-bottom: none;
 }
-
