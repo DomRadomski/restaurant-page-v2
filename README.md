@@ -35,8 +35,6 @@ The application follows a modular rendering pattern:
     ├── menu.js          → Menu page section
     ├── about.js         → About page section
 
-Rendering Flow
-
 index.js acts as the application engine. A simple route map determines which page generator to call. The .content container is cleared. The selected page module renders its UI dynamically.
 Navigation is created once and reused. This keeps routing logic isolated from UI implementation.
 
@@ -137,3 +135,4 @@ Navigation buttons trigger loadPage(route), which:
 ## 📚 What This Project Taught Me
 
 This project strengthened my understanding of modular JavaScript architecture and reinforced the importance of separation of concerns. By building a small routing system and abstracting DOM creation into reusable utilities, I learned how to structure front-end applications in a scalable way without relying on frameworks. It improved my confidence with ES6 modules, component composition, and thinking in terms of reusable UI patterns rather than static markup. Most importantly, it shifted my mindset from “writing pages” to “designing systems,” which is a far more maintainable and professional approach to front-end development.
+
